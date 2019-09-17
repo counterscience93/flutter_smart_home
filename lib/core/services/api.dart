@@ -14,7 +14,7 @@ class Api {
   Future<User> getUserById(int userId) async {
     // Get user profile for id
     var response = await client.get('$endpoint/users/$userId');
-    print('RESP: $response');
+    print('RESP:  ${response.toString()}');
     // Convert and return
     return User.fromRawJson(response.body);
   }
@@ -26,12 +26,13 @@ class Api {
     var response = await client.get('$endpoint/devices?userId=$userId');
 
     // parse into List
-    var parsed = json.decode(response.body) as List<String>;
-
-    // loop and convert each item to Post
+    var parsed = json.decode(response.body) as List<dynamic>;
+    // loop and convert each item to Device
     for (var device in parsed) {
-      devices.add(Device.fromRawJson(device));
+      print('DEVICEEEEE: ${device.toString()}');
+      devices.add(Device.fromRawJson(device.toString()));
     }
+    print('DEVICES: ${devices.length}');
     return devices;
   }
 }

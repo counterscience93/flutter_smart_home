@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:smart_home_final/core/model/user.dart';
 import 'package:smart_home_final/ui/share/text_styles.dart';
 import 'package:smart_home_final/ui/share/ui_helpers.dart';
+import 'package:smart_home_final/ui/views/widget/device_view_widget.dart';
 
 class HomeView extends StatelessWidget {
 
@@ -49,10 +50,9 @@ class HomeView extends StatelessWidget {
                 Text('Here are all your smart devices', style: subHeaderStyle),
           ),
           UIHelper.verticalSpaceSmall,
-          // Expanded(
-          //   // child: Devices(),
-          //   child: null,
-          // )
+          Expanded(
+            child: Devices(),
+          )
         ],
       ),
     );
