@@ -5,7 +5,7 @@
 import 'dart:convert';
 
 class Device {
-    String id;
+    String deviceId;
     String deviceName;
     int customerId;
     String dayActive;
@@ -15,7 +15,7 @@ class Device {
     List<Slot> slot;
 
     Device({
-        this.id,
+        this.deviceId,
         this.deviceName,
         this.customerId,
         this.dayActive,
@@ -30,7 +30,7 @@ class Device {
     String toRawJson() => json.encode(toJson());
 
     factory Device.fromJson(Map<String, dynamic> json) => Device(
-        id: json["id"] == null ? null : json["id"],
+        deviceId: json["deviceId"] == null ? null : json["deviceId"],
         deviceName: json["deviceName"] == null ? null : json["deviceName"],
         customerId: json["customerId"] == null ? null : json["customerId"],
         dayActive: json["dayActive"] == null ? null : json["dayActive"],
@@ -41,7 +41,7 @@ class Device {
     );
 
     Map<String, dynamic> toJson() => {
-        "id": id == null ? null : id,
+        "deviceId": deviceId == null ? null : deviceId,
         "deviceName": deviceName == null ? null : deviceName,
         "customerId": customerId == null ? null : customerId,
         "dayActive": dayActive == null ? null : dayActive,
