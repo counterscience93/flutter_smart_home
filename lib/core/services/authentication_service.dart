@@ -14,7 +14,7 @@ class AuthenticationService {
 
   Future<bool> login(int userId) async {
     var fetchedUser = await _api.getUserById(userId);
-    print('user: $fetchedUser');
+    print('user: ${fetchedUser.toRawJson()}');
     if (fetchedUser != null) {
       _userController.add(fetchedUser);
       return true;

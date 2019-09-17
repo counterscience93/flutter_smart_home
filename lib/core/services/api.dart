@@ -14,6 +14,7 @@ class Api {
   Future<User> getUserById(int userId) async {
     // Get user profile for id
     var response = await client.get('$endpoint/users/$userId');
+    print('RESP: $response');
     // Convert and return
     return User.fromRawJson(response.body);
   }
@@ -31,8 +32,6 @@ class Api {
     for (var device in parsed) {
       devices.add(Device.fromRawJson(device));
     }
-
     return devices;
   }
-  
 }

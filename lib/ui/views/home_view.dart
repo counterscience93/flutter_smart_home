@@ -1,17 +1,60 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:provider/provider.dart';
+import 'package:smart_home_final/core/model/user.dart';
+import 'package:smart_home_final/ui/share/text_styles.dart';
+import 'package:smart_home_final/ui/share/ui_helpers.dart';
 
-class HomeView extends StatefulWidget {
-  HomeView({Key key}) : super(key: key);
+class HomeView extends StatelessWidget {
 
-  _HomeViewState createState() => _HomeViewState();
-}
-
-class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-       child: Text('Home'),
+    User user = Provider.of<User>(context);
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Smart Home KHN'),
+      ),
+      drawer: Drawer(
+        child: Column(
+          children: <Widget>[
+            UserAccountsDrawerHeader(
+              accountName: new Text(
+                user.userName,
+                style:
+                    new TextStyle(fontSize: 18.0, fontWeight: FontWeight.w500),
+              ),
+              accountEmail: new Text(
+                user.email,
+                style:
+                    new TextStyle(fontSize: 18.0, fontWeight: FontWeight.w500),
+              ),
+            ),
+            // new Column(children: null),
+          ],
+        ),
+      ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          UIHelper.verticalSpaceLarge,
+          Padding(
+            padding: const EdgeInsets.only(left: 20.0),
+            child: Text(
+              'Welcome ${user.userName}',
+              style: headerStyle,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 20.0),
+            child:
+                Text('Here are all your smart devices', style: subHeaderStyle),
+          ),
+          UIHelper.verticalSpaceSmall,
+          // Expanded(
+          //   // child: Devices(),
+          //   child: null,
+          // )
+        ],
+      ),
     );
   }
 }
