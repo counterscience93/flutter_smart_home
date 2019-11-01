@@ -14,6 +14,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: providers,
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Khsmart',
         theme: ThemeData(
           primaryColor: Colors.green,
